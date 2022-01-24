@@ -23,11 +23,12 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (PlayerManager.gameOver)
         {
             animator.enabled = false;
             this.enabled = false;
-        }
+        }*/
 
         float distance = Vector3.Distance(transform.position, target.position);
 
@@ -39,8 +40,8 @@ public class Enemy : MonoBehaviour
         else if(currentState == "ChaseState")
         {
             //play the run animation
-            animator.SetTrigger("chase");
-            animator.SetBool("isAttacking", false);
+            //animator.SetTrigger("chase");
+            animator.SetBool("Running", false);
 
             if(distance < attackRange)
                 currentState = "AttackState";
@@ -74,9 +75,9 @@ public class Enemy : MonoBehaviour
 
 
         }
-        else if(currentState == "AttackState")
+        else if(currentState == "AttackState"&& !animator.GetCurrentAnimatorStateInfo(0).IsName("Kicking"))
         {
-            animator.SetBool("isAttacking", true);
+            animator.SetTrigger("Kicking");
 
             if (distance > attackRange)
                 currentState = "ChaseState";
@@ -87,6 +88,8 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
         currentState = "ChaseState";
+        Debug.Log(health);
+
 
         if(health < 0)
         {

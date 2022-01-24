@@ -4,20 +4,16 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
     private Vector3 direction;
-    public float speed = 8;
-
-    public float jumpForce = 10;
-    public float gravity = -20;
-    public Transform groundCheck;
+    private float speed = 4;
     public LayerMask groundLayer;
-
-    public bool ableToMakeADoubleJump = true;
-
     public Animator animator;
     public Transform model;
 
+
+
     void Update()
     {
+        /*
         if (PlayerManager.gameOver)
         {
             //play death animation
@@ -25,90 +21,76 @@ public class PlayerController : MonoBehaviour
 
             //disable the script
             this.enabled = false;
+        }*/
+
+
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            animator.SetBool("Run", true);
+
+        }
+        else
+        {
+            animator.SetBool("Run", false);
         }
 
-        //Take the horizontal input to move the player
         float hInput = Input.GetAxis("Horizontal");
-        direction.x = hInput * speed;
-        animator.SetFloat("speed", Mathf.Abs(hInput));
+        direction.x = hInput;
 
-        //Take the vertical input to move the player
         float vInput = Input.GetAxis("Vertical");
-        direction.z = vInput * speed;
+        direction.z = vInput;
 
-        if(hInput!=0)
+        if ((animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Run")) && (hInput != 0 || vInput != 0))
         {
-            animator.SetFloat("speed", Mathf.Abs(hInput));
-        }
-        else
-        {
-            animator.SetFloat("speed", Mathf.Abs(vInput));
-        }
-        
-
-
-        //Check if the player is on the ground
-        bool isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
-        animator.SetBool("isGrounded", isGrounded);
-
-        if (isGrounded)
-        {
-            direction.y = -1;
-            ableToMakeADoubleJump = true;
-            if (Input.GetButtonDown("Jump"))
-            {
-                Jump();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                animator.SetTrigger("fireBallAttack");
-            }
-        }
-        else
-        {
-            direction.y += gravity * Time.deltaTime;//Add Gravity
-            if (ableToMakeADoubleJump && Input.GetButtonDown("Jump"))
-            {
-                DoubleJump();
-            }
+            controller.Move(direction * Time.deltaTime * speed);
+            Quaternion newRotation = Quaternion.LookRotation(new Vector3(hInput, 0, vInput));
+            gameObject.transform.rotation = newRotation;
         }
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Fireball Attack"))
-            return;
 
-        //Flip the player
-        if(hInput != 0)
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
-            Quaternion newRotation = Quaternion.LookRotation(new Vector3(hInput, 0, 0));
-            model.rotation = newRotation;
+
+            animator.SetTrigger("Attack1");
+        }
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && model.GetComponent<AnimEvents>().comboCheck)
+        {
+            animator.SetTrigger("Attack2");
+        }
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && model.GetComponent<AnimEvents>().comboCheck)
+        {
+            animator.SetTrigger("Attack3");
         }
 
-        //Move the player using the character controller
-        controller.Move(direction * Time.deltaTime);
-
-        //Reset Z Position
-        //if (transform.position.z != 0)
-          //  transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        if (Input.GetKeyDown(KeyCode.Mouse1) && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            animator.SetTrigger("Magic");
+            Invoke("MagicAttack", 1);
+        }
 
         //win level
+        /*
         if (PlayerManager.winLevel)
         {
             animator.SetTrigger("win");
             this.enabled = false;
+        }*/
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Enemy" && (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2")))
+        {
+            other.GetComponent<Enemy>().TakeDamage(1);
         }
     }
 
-    private void DoubleJump()
-    {
-        //Double Jump
-        animator.SetTrigger("doubleJump");
-        direction.y = jumpForce;
-        ableToMakeADoubleJump = false;
-    }
-    private void Jump()
-    {
-        //Jump
-        direction.y = jumpForce;
+    private void MagicAttack(){
+        model.GetComponent<PlayerAttacks>().FireBallAttack();
     }
 }
+
