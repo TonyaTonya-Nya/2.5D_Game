@@ -5,7 +5,6 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     private Vector3 direction;
     private float speed = 4;
-    public LayerMask groundLayer;
     public Animator animator;
     public Transform model;
 
@@ -37,11 +36,10 @@ public class PlayerController : MonoBehaviour
 
         float hInput = Input.GetAxis("Horizontal");
         direction.x = hInput;
-
         float vInput = Input.GetAxis("Vertical");
         direction.z = vInput;
 
-        if ((animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Run")) && (hInput != 0 || vInput != 0))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Run") && (hInput != 0 || vInput != 0))
         {
             controller.Move(direction * Time.deltaTime * speed);
             Quaternion newRotation = Quaternion.LookRotation(new Vector3(hInput, 0, vInput));
@@ -80,16 +78,29 @@ public class PlayerController : MonoBehaviour
         }*/
     }
 
-
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Enemy" && (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2")))
+
+
+
+
+        if (other.tag == "Enemy" && (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3")) && model.GetComponent<AnimEvents>().attackCheck)
         {
-            other.GetComponent<Enemy>().TakeDamage(1);
+            float damage = 0.5f;
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
+                damage = 0.5f;
+            else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
+                damage = 0.6f;
+            else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3"))
+                damage = 0.7f;
+            other.GetComponent<Enemy>().TakeDamage(damage);
         }
+
+
     }
 
-    private void MagicAttack(){
+    private void MagicAttack()
+    {
         model.GetComponent<PlayerAttacks>().FireBallAttack();
     }
 }

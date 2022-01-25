@@ -1,28 +1,120 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    private string currentState = "IdleState";
+    private NavMeshAgent agent;
     private Transform target;
+    private PlayerManager player;
 
-    public float chaseRange = 5;
-    public float attackRange = 2;
-    public float speed = 3;
 
-    public int health;
-    public int maxHealth;
-
+    public float chaseRange;
+    public float attackRange;
+    public float attackValue;
+    public float health;
+    public float maxHealth;
+    public Transform model;
     public Animator animator;
+    public GameObject ui;
+    public Slider healthBar;
+
+    EnemyState state = EnemyState.idle;
+
+    enum EnemyState
+    {
+        trace, idle, attack, die
+    }
 
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerManager>();
         health = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+        ui.transform.rotation = new Quaternion(0, 0, 0, 1);
+
+
+        healthBar.value = Mathf.Max(0, health / maxHealth * 100);
+
+        float distance = Vector3.Distance(transform.position, target.position);
+
+        if (state == EnemyState.idle)
+        {
+            if (distance <= chaseRange)
+            {
+                state = EnemyState.trace;
+                return;
+            }
+
+            if (distance <= attackRange)
+            {
+                state = EnemyState.attack;
+                return;
+            }
+
+            animator.SetBool("Running", false);
+            agent.SetDestination(transform.position);
+        }
+        else if (state == EnemyState.trace)
+        {
+            if (distance > chaseRange)
+            {
+                state = EnemyState.idle;
+                return;
+            }
+
+            if (distance <= attackRange)
+            {
+                state = EnemyState.attack;
+                return;
+            }
+
+
+            animator.SetBool("Running", true);
+
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Kicking"))
+            {
+                agent.SetDestination(target.transform.position);
+            }
+            else
+            {
+                agent.SetDestination(transform.position);
+            }
+        }
+        else if (state == EnemyState.attack)
+        {
+            if (distance > chaseRange && !animator.GetCurrentAnimatorStateInfo(0).IsName("Kicking"))
+            {
+                state = EnemyState.idle;
+                return;
+            }
+
+            if (distance > attackRange && !animator.GetCurrentAnimatorStateInfo(0).IsName("Kicking"))
+            {
+                state = EnemyState.trace;
+                return;
+            }
+
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Kicking"))
+            {
+                animator.SetTrigger("Kicking");
+            }
+
+            animator.SetBool("Running", false);
+            agent.SetDestination(transform.position);
+        }
+        else if (state == EnemyState.die)
+        {
+            agent.SetDestination(transform.position);
+        }
+
+
         /*
         if (PlayerManager.gameOver)
         {
@@ -30,81 +122,45 @@ public class Enemy : MonoBehaviour
             this.enabled = false;
         }*/
 
-        float distance = Vector3.Distance(transform.position, target.position);
+    }
 
-        if(currentState == "IdleState")
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Fireball")
         {
-            if (distance < chaseRange)
-                currentState = "ChaseState";
+            chaseRange = 20;
         }
-        else if(currentState == "ChaseState")
+
+
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player" && model.GetComponent<AnimEvents>().attackCheck)
         {
-            //play the run animation
-            //animator.SetTrigger("chase");
-            animator.SetBool("Running", false);
-
-            if(distance < attackRange)
-                currentState = "AttackState";
-
-            //move towards the player
-            if(target.position.x > transform.position.x)
-            {
-                //move right
-                transform.Translate(transform.right * speed * Time.deltaTime);
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-            }
-            else
-            {
-                //move left
-                transform.Translate(-transform.right * speed * Time.deltaTime);
-                transform.rotation = Quaternion.identity;
-            }
-
-            //move towards the player
-            if (target.position.z > transform.position.z)
-            {
-                //move right
-                transform.Translate(transform.forward * speed * Time.deltaTime);
-            }
-            else
-            {
-                //move left
-                transform.Translate(-transform.forward * speed * Time.deltaTime);
-            }
-
-
-
-        }
-        else if(currentState == "AttackState"&& !animator.GetCurrentAnimatorStateInfo(0).IsName("Kicking"))
-        {
-            animator.SetTrigger("Kicking");
-
-            if (distance > attackRange)
-                currentState = "ChaseState";
+            player.Damage(attackValue);
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
-        currentState = "ChaseState";
-        Debug.Log(health);
-
-
-        if(health < 0)
+        if (health < 0)
         {
+            state = EnemyState.die;
             Die();
         }
     }
 
     private void Die()
     {
-        //play a die animation
-        animator.SetTrigger("isDead");
+        if (!animator.GetBool("Death"))
+        {
+            animator.SetBool("Death", true);
+        }
 
-        //disable the script and the collider
-        GetComponent<CapsuleCollider>().enabled = false;
         Destroy(gameObject, 3);
-        this.enabled = false;
+        //this.enabled = false;
     }
 }

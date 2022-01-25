@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     public static int numberOfCoins;
     public TextMeshProUGUI numberOfCoinsText;
 
-    public static int currentHealth = 100;
+    public static float currentHealth = 100;
     public Slider healthBar;
 
     public static bool gameOver;
@@ -58,5 +58,11 @@ public class PlayerManager : MonoBehaviour
             }
 
         }
+    }
+
+
+    public void Damage(float n)
+    {
+        currentHealth -= n;
     }
 }

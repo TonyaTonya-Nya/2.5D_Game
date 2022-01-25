@@ -10,7 +10,8 @@ public class AnimEvents : MonoBehaviour
 
     public void CheckInit()
     {
-        attackCheck = true;
+        AttackInit();
+        ComboInit();
     }
 
     public void ComboInit()
@@ -18,10 +19,25 @@ public class AnimEvents : MonoBehaviour
         comboCheck = true;
     }
 
-    public void CheckEnd()
+    public void AttackInit()
+    {
+        attackCheck = true;
+    }
+
+    public void ComboEnd()
+    {
+        comboCheck = false;
+    }
+
+    public void AttackEnd()
     {
         attackCheck = false;
-        comboCheck = false;
+    }
+
+    public void CheckEnd()
+    {
+        ComboEnd();
+        AttackEnd();
     }
 
 
