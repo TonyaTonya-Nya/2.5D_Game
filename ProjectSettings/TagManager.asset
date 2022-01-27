@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Fireball
   - PlayerManager
+  - TriggerManager
   layers:
   - Default
   - TransparentFX

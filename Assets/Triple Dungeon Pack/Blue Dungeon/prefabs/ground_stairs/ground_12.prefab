@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4945648936639074}
   - component: {fileID: 33147838675796568}
   - component: {fileID: 23562444882661820}
+  - component: {fileID: 5070525238516637070}
+  - component: {fileID: 5735426251422785810}
   m_Layer: 0
   m_Name: ground_12
   m_TagString: Untagged
@@ -81,3 +83,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5070525238516637070
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107106597481968}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 3.2342937, z: 0.7143537}
+  m_Center: {x: 1.661005e-23, y: 1.6171459, z: 0.017457843}
+--- !u!65 &5735426251422785810
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107106597481968}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7548835, y: 3.2733047, z: 8.006622}
+  m_Center: {x: -0.0041538477, y: 1.6366514, z: -0.0033111572}
