@@ -117,8 +117,8 @@ MonoBehaviour:
   attackValue: 0.5
   health: 0
   maxHealth: 200
-  model: {fileID: 0}
-  animator: {fileID: 0}
+  model: {fileID: 3137200616916901650}
+  animator: {fileID: 3171424929300789499}
   ui: {fileID: 5193246378103936400}
   healthBar: {fileID: 5193246378555950928}
 --- !u!195 &5193246377019601137
@@ -596,6 +596,12 @@ GameObject:
 --- !u!4 &3137200616916901650 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4095681922811014830, guid: 4fedd7f39e74ae842abf8824e7378230,
+    type: 3}
+  m_PrefabInstance: {fileID: 1395933729055338940}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3171424929300789499 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4565647813892819271, guid: 4fedd7f39e74ae842abf8824e7378230,
     type: 3}
   m_PrefabInstance: {fileID: 1395933729055338940}
   m_PrefabAsset: {fileID: 0}
