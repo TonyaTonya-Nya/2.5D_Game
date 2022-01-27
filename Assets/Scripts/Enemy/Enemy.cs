@@ -129,7 +129,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "Fireball")
         {
-            chaseRange = 20;
+            chaseRange = 60;
         }
 
 

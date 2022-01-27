@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33219138498105072}
   - component: {fileID: 23142899198243486}
   - component: {fileID: -6539034184559654120}
+  - component: {fileID: 4532753973155425678}
   m_Layer: 0
   m_Name: pylon_2
   m_TagString: Untagged
@@ -95,3 +96,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.612647, y: 7.01, z: 2.612648}
   m_Center: {x: 0.00000047683716, y: 3.505, z: 0}
+--- !u!208 &4532753973155425678
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566008642154666}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.3060001, y: 3.505, z: 1.3060001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 3.505, z: 0}
+  m_TimeToStationary: 0.5

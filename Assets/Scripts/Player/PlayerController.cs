@@ -4,10 +4,11 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
     private Vector3 direction;
-    private float speed = 4;
+    public float speed;
     public Animator animator;
     public Transform model;
-
+    public float atkDamage;
+    public float comboDamage;
 
 
     void Update()
@@ -86,13 +87,13 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "Enemy" && (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3")) && model.GetComponent<AnimEvents>().attackCheck)
         {
-            float damage = 0.5f;
+            float damage = atkDamage;
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
-                damage = 0.5f;
+                damage = atkDamage;
             else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
-                damage = 0.6f;
+                damage = atkDamage + comboDamage;
             else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3"))
-                damage = 0.7f;
+                damage = atkDamage+2*comboDamage;
             other.GetComponent<Enemy>().TakeDamage(damage);
         }
 
