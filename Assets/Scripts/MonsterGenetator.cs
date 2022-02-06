@@ -20,11 +20,14 @@ public class MonsterGenetator : MonoBehaviour
     public float generateFrequency;
 
     private int nowNumber = 0;
+    private Enemy selfEnemy;
 
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("Generate", 0, generateFrequency);
+        selfEnemy = GetComponent<Enemy>();
+        selfEnemy.OnDie += () => CancelInvoke("Generate");
     }
 
     private void Generate()

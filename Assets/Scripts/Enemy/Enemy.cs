@@ -85,11 +85,13 @@ public class Enemy : MonoBehaviour
 
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Kicking"))
             {
-                agent.SetDestination(target.transform.position);
+                if (agent != null)
+                    agent.SetDestination(target.transform.position);
             }
             else
             {
-                agent.SetDestination(transform.position);
+                if (agent != null)
+                    agent.SetDestination(transform.position);
             }
         }
         else if (state == EnemyState.attack)
@@ -112,11 +114,13 @@ public class Enemy : MonoBehaviour
             }
 
             animator.SetBool("Running", false);
-            agent.SetDestination(transform.position);
+            if (agent != null)
+                agent.SetDestination(transform.position);
         }
         else if (state == EnemyState.die)
         {
-            agent.SetDestination(transform.position);
+            if (agent != null)
+                agent.SetDestination(transform.position);
         }
 
 
