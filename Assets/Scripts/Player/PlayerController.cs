@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -96,7 +96,10 @@ public class PlayerController : MonoBehaviour
                 damage = atkDamage+2*comboDamage;
             other.GetComponent<Enemy>().TakeDamage(damage);
         }
-
+        else if (other.CompareTag("Npc") && Input.GetKeyDown(KeyCode.E))
+        {
+            other.GetComponent<Npc>().StartDialogue();
+        }
 
     }
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using System;
+using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
@@ -18,6 +19,8 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     public GameObject ui;
     public Slider healthBar;
+
+    public Action OnDie;
 
     EnemyState state = EnemyState.idle;
 
@@ -149,6 +152,7 @@ public class Enemy : MonoBehaviour
         if (health < 0)
         {
             state = EnemyState.die;
+            OnDie?.Invoke();
             Die();
         }
     }

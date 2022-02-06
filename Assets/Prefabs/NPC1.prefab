@@ -2046,9 +2046,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8059200038384836633}
   - component: {fileID: 7517280465344874596}
+  - component: {fileID: 865258208}
   m_Layer: 0
   m_Name: NPC1
-  m_TagString: Untagged
+  m_TagString: Npc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2062,7 +2063,7 @@ Transform:
   m_GameObject: {fileID: 7247372692830976675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.6, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 524184801868798828}
   - {fileID: 8043681897233409808}
@@ -2088,6 +2089,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &865258208
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7247372692830976675}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.2936897
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.64684486, z: -0}
 --- !u!1 &7271981771434592429
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ TagManager:
   - Fireball
   - PlayerManager
   - TriggerManager
+  - Npc
   layers:
   - Default
   - TransparentFX

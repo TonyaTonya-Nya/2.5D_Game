@@ -11,10 +11,16 @@ public struct EventTrigger
 
 public class TriggerManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static TriggerManager Instance { get; private set; }
 
     public EventTrigger[] trigger;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    // Start is called before the first frame update
     void Start()
     {
 
