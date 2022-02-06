@@ -1,5 +1,86 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1250729711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1250729712}
+  - component: {fileID: 1250729715}
+  - component: {fileID: 1250729714}
+  - component: {fileID: 1250729713}
+  m_Layer: 0
+  m_Name: Npc
+  m_TagString: Npc
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1250729712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250729711}
+  m_LocalRotation: {x: -0, y: -0.99626255, z: -0, w: -0.08637645}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_Children: []
+  m_Father: {fileID: 800067453705237178}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1250729715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250729711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 785630e34ff8df74d9f5db8a0af55e70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preDialogue:
+  - "\u5E6B\u6211\u6536\u96C6\u6240\u6709\u7684\u881F\u71ED\u5427!"
+  inDialogue:
+  - "\u597D\u50CF\u9084\u6709\u6C92\u6536\u96C6\u5230\u7684\u881F\u71ED!"
+  postDialogue:
+  - "\u592A\u68D2\u4E86!"
+  - "\u9580\u958B\u4E86\uFF0C\u8D95\u5FEB\u904E\u53BB\u5427\u3002"
+  doorName: Door3
+  mission: {fileID: 1250729714}
+--- !u!114 &1250729714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250729711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5173a690f85c3e4ba4c1897b5dba68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  area: {fileID: 0}
+--- !u!65 &1250729713
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250729711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 2.1425176, z: 3}
+  m_Center: {x: 0, y: 0.57125896, z: -0}
 --- !u!1 &23003641577465856
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 800067453705237178}
   - component: {fileID: 905452642100594263}
+  - component: {fileID: 28111399}
   m_Layer: 0
   m_Name: NPC2
   m_TagString: Untagged
@@ -26,10 +108,11 @@ Transform:
   m_GameObject: {fileID: 23003641577465856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 3028240461164233983}
   - {fileID: 5136984091886735918}
+  - {fileID: 1250729712}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,6 +135,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &28111399
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23003641577465856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 7.1607246
+  m_Height: 32.007587
+  m_Direction: 1
+  m_Center: {x: 0.0000000041932964, y: -0.32562828, z: -3.5032597}
 --- !u!1 &215819396008311844
 GameObject:
   m_ObjectHideFlags: 0

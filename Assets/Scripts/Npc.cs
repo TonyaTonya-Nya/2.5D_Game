@@ -15,11 +15,6 @@ public class Npc : MonoBehaviour
     private bool isInMission;
     private bool isCompleteMission;
 
-    private void Start()
-    {
-
-    }
-
     public void StartDialogue()
     {
         if (isCompleteMission)
@@ -38,7 +33,8 @@ public class Npc : MonoBehaviour
         }
         else
         {
-            DialogueManager.Instance.OnDialogueEnd += StartMission;
+            if (mission != null)
+                DialogueManager.Instance.OnDialogueEnd += StartMission;
             DialogueManager.Instance.StartDialogue(transform.position, preDialogue);
         }
     }

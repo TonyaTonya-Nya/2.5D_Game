@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum MissionType
 {
-    ClearMonster
+    ClearMonster,
+    GetAllItem
 }
 
 public class Mission : MonoBehaviour
@@ -18,6 +19,8 @@ public class Mission : MonoBehaviour
         {
             case MissionType.ClearMonster:
                 return !area.HasEnemy();
+            case MissionType.GetAllItem:
+                return !area.HasItem();
             default:
                 break;
         }
