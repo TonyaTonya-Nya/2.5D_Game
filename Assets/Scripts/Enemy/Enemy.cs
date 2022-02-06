@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     public Slider healthBar;
 
     public Action OnDie;
+    private bool isDiying = false;
 
     EnemyState state = EnemyState.idle;
 
@@ -62,7 +63,8 @@ public class Enemy : MonoBehaviour
             }
 
             animator.SetBool("Running", false);
-            agent.SetDestination(transform.position);
+            if (agent != null)
+                agent.SetDestination(transform.position);
         }
         else if (state == EnemyState.trace)
         {
@@ -148,11 +150,14 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (isDiying)
+            return;
         health -= damage;
         if (health < 0)
         {
             state = EnemyState.die;
             OnDie?.Invoke();
+            isDiying = true;
             Die();
         }
     }

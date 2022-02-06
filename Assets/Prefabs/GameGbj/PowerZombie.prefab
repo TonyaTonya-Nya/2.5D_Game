@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8392406070173732485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6, y: 0.5, z: -0.1597383}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 8392406071241075614}
   - {fileID: 6913591053979982393}
@@ -724,6 +724,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PowerZombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363829158679112879, guid: a7962dc2085c35f47b711b8910f037ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2373823402009672337, guid: a7962dc2085c35f47b711b8910f037ee,
         type: 3}

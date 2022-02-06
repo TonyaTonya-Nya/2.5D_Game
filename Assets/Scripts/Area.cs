@@ -15,6 +15,12 @@ public class Area : MonoBehaviour
             triggerController.OnHide += () => items.Remove(triggerController);
     }
 
+    public void AddEnemy(Enemy enemy)
+    {
+        enemies.Add(enemy);
+        enemy.OnDie += () => enemies.Remove(enemy);
+    }
+
     public bool HasEnemy()
     {
         return enemies.Count != 0;
