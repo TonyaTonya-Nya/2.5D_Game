@@ -15,34 +15,62 @@ public class Npc : MonoBehaviour
     private bool isInMission;
     private bool isCompleteMission;
 
+    public DialogueManager dialogueManager;
+
+
+    public bool canDialogue = false;
+    private bool isE = false;
+    private float deltaT = 0;
+
+    void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            isE = true;
+        }
+
+        if (isE)
+        {
+            deltaT += Time.deltaTime;
+        }
+
+        if (deltaT > 0.5f)
+        {
+            deltaT = 0;
+            isE = false;
+        }
+    }
+
+
     public void StartDialogue()
     {
         if (isCompleteMission)
         {
-            DialogueManager.Instance.StartDialogue(transform.position, postDialogue);
+            dialogueManager.StartDialogue(transform.position, postDialogue);
         }
         else if (isInMission)
         {
             if (mission.CheckComplete())
             {
-                DialogueManager.Instance.OnDialogueEnd += FinishMission;
-                DialogueManager.Instance.StartDialogue(transform.position, postDialogue);
+                dialogueManager.OnDialogueEnd += FinishMission;
+                dialogueManager.StartDialogue(transform.position, postDialogue);
             }
             else
-                DialogueManager.Instance.StartDialogue(transform.position, inDialogue);
+                dialogueManager.StartDialogue(transform.position, inDialogue);
         }
         else
         {
             if (mission != null)
-                DialogueManager.Instance.OnDialogueEnd += StartMission;
-            DialogueManager.Instance.StartDialogue(transform.position, preDialogue);
+                dialogueManager.OnDialogueEnd += StartMission;
+            dialogueManager.StartDialogue(transform.position, preDialogue);
         }
     }
 
     private void StartMission()
     {
         isInMission = true;
-        DialogueManager.Instance.OnDialogueEnd -= StartMission;
+        dialogueManager.OnDialogueEnd -= StartMission;
     }
 
     private void FinishMission()
@@ -50,6 +78,23 @@ public class Npc : MonoBehaviour
         isCompleteMission = true;
         isInMission = false;
         TriggerManager.Instance.ChangeStatus(doorName, true);
-        DialogueManager.Instance.OnDialogueEnd -= FinishMission;
+        dialogueManager.OnDialogueEnd -= FinishMission;
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+            canDialogue = true;
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+            canDialogue = false;
+    }
+
+    public bool DialogueCheck()
+    {
+        return canDialogue & isE;
     }
 }

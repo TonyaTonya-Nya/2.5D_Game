@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    public static DialogueManager Instance { get; private set; }
     public GameObject dialogueBox;
     public Text contentText;
 
@@ -14,14 +13,17 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+      
+    }
+
+    void Update()
+    {
+        this.transform.rotation = new Quaternion(0, 0, 0, 1);
     }
 
     public void StartDialogue(Vector3 objectPosition, List<string> dialogues)
     {
         dialogueBox.SetActive(true);
-        Vector3 pos = Camera.main.WorldToScreenPoint(objectPosition + new Vector3(0, 7, 0));
-        dialogueBox.transform.position = pos ;
         StartCoroutine(DialogueCoroutine(dialogues));
     }
 

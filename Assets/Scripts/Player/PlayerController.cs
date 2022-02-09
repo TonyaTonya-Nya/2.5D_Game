@@ -82,10 +82,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
 
-
-
-
-        if (other.tag == "Enemy" && (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3")) && model.GetComponent<AnimEvents>().attackCheck)
+        if (other.CompareTag("Enemy") && (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3")) && model.GetComponent<AnimEvents>().attackCheck)
         {
             float damage = atkDamage;
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
@@ -94,9 +91,9 @@ public class PlayerController : MonoBehaviour
                 damage = atkDamage + comboDamage;
             else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3"))
                 damage = atkDamage+2*comboDamage;
-            other.GetComponent<Enemy>().TakeDamage(damage);
+            other.GetComponent<Enemy>().TakeDamage(damage,0);
         }
-        else if (other.CompareTag("Npc") && Input.GetKeyDown(KeyCode.E))
+        else if (other.CompareTag("Npc") && other.GetComponent<Npc>().DialogueCheck())
         {
             other.GetComponent<Npc>().StartDialogue();
         }

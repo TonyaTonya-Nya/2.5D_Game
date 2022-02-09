@@ -23,6 +23,9 @@ public class Enemy : MonoBehaviour
     public Action OnDie;
     private bool isDiying = false;
 
+    public bool swordDmg = true;
+    public bool magicDmg = true;
+
     EnemyState state = EnemyState.idle;
 
     enum EnemyState
@@ -152,11 +155,17 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, int type = 0)
     {
         if (isDiying)
             return;
-        health -= damage;
+
+        if (type == 1 && magicDmg)
+            health -= damage;
+        else if (type == 0 && swordDmg)
+            health -= damage;
+
+
         if (health < 0)
         {
             state = EnemyState.die;

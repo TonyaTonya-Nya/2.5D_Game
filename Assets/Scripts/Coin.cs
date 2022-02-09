@@ -14,7 +14,7 @@ public class Coin : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            PlayerManager.numberOfCoins++;//Increment the number of coins
+            //PlayerManager.numberOfCoins++;//Increment the number of coins
             Destroy(gameObject);//destroy the coin
         }
     }

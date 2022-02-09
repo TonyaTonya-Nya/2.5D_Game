@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
-    public static int numberOfCoins;
+    public int numberOfCoins;
     public TextMeshProUGUI numberOfCoinsText;
 
-    public static float currentHealth = 100;
+    public float currentHealth = 100;
     public Slider healthBar;
 
     public static bool gameOver;
@@ -26,6 +26,12 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
+
+        if (currentHealth <= 100)
+        {
+            currentHealth += 0.005f;
+        }
+
         //Display the number of coins
         numberOfCoinsText.text = "coins:" + numberOfCoins;
 

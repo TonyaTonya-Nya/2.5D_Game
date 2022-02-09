@@ -113,14 +113,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRange: 15
-  attackRange: 1
-  attackValue: 0.5
+  attackRange: 2
+  attackValue: 0.2
   health: 0
-  maxHealth: 200
+  maxHealth: 100
   model: {fileID: 3137200616916901650}
   animator: {fileID: 3171424929300789499}
   ui: {fileID: 5193246378103936400}
   healthBar: {fileID: 5193246378555950928}
+  swordDmg: 1
+  magicDmg: 1
 --- !u!195 &5193246377019601137
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -585,6 +587,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4565647813892819271, guid: 4fedd7f39e74ae842abf8824e7378230,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ff062e77c4b9dde4285a9bc5d7153494, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fedd7f39e74ae842abf8824e7378230, type: 3}
 --- !u!1 &2360523897642124712 stripped
