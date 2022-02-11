@@ -9,6 +9,7 @@ TagManager:
   - PlayerManager
   - TriggerManager
   - Npc
+  - Boom
   layers:
   - Default
   - TransparentFX

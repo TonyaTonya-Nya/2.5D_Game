@@ -25,6 +25,12 @@ public class Enemy : MonoBehaviour
 
     public bool swordDmg = true;
     public bool magicDmg = true;
+    public bool isBoss = false;
+    public int magicTraceRange = 60;
+
+    public AudioClip[] gameAudio;
+    private AudioSource myAudioSource;
+    private float delta_t = 0f;
 
     EnemyState state = EnemyState.idle;
 
@@ -39,13 +45,18 @@ public class Enemy : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
         player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerManager>();
         health = maxHealth;
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+       
         ui.transform.rotation = new Quaternion(0, 0, 0, 1);
 
+       
+        delta_t += Time.deltaTime;
+        
 
         healthBar.value = Mathf.Max(0, health / maxHealth * 100);
 
@@ -68,6 +79,13 @@ public class Enemy : MonoBehaviour
             animator.SetBool("Running", false);
             if (agent != null)
                 agent.SetDestination(transform.position);
+
+            if (isBoss&&delta_t > 3)
+            {
+                delta_t = 0;
+                MagicAttack();
+            }
+
         }
         else if (state == EnemyState.trace)
         {
@@ -95,6 +113,17 @@ public class Enemy : MonoBehaviour
             {
                 if (agent != null)
                     agent.SetDestination(transform.position);
+            }
+
+
+            if (isBoss && delta_t > 0.5)
+            {
+                delta_t = 0;
+                for (int i = 0; i < 2; i++)
+                {
+                    MagicAttack();
+                }
+               
             }
         }
         else if (state == EnemyState.attack)
@@ -126,6 +155,16 @@ public class Enemy : MonoBehaviour
                 agent.SetDestination(transform.position);
         }
 
+        if (isBoss && delta_t > 3)
+        {
+            delta_t = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                MagicAttack();
+            }
+
+        }
+
 
         /*
         if (PlayerManager.gameOver)
@@ -141,7 +180,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "Fireball")
         {
-            chaseRange = 60;
+            chaseRange = magicTraceRange;
         }
 
 
@@ -164,6 +203,8 @@ public class Enemy : MonoBehaviour
             health -= damage;
         else if (type == 0 && swordDmg)
             health -= damage;
+        else if (type == 2)
+            health -= damage;
 
 
         if (health < 0)
@@ -179,10 +220,28 @@ public class Enemy : MonoBehaviour
     {
         if (!animator.GetBool("Death"))
         {
+            if (gameAudio.Length > 0)
+            {
+                myAudioSource.PlayOneShot(gameAudio[0]);
+            }
             animator.SetBool("Death", true);
         }
 
+        if (TryGetComponent(out BossDamager damager))
+        {
+     
+            damager.Damage();
+            Destroy(gameObject, 0.2f);
+        }
+
+
         Destroy(gameObject, 3);
         //this.enabled = false;
+    }
+
+
+    private void MagicAttack()
+    {
+        gameObject.transform.GetComponent<PlayerAttacks>().BossAttack();
     }
 }

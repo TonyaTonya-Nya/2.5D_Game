@@ -10,6 +10,14 @@ public class PlayerController : MonoBehaviour
     public float atkDamage;
     public float comboDamage;
 
+    public AudioClip[] gameAudio;
+    private AudioSource myAudioSource;
+
+    private void Start()
+    {
+        myAudioSource = GetComponent<AudioSource>();
+    }
+
 
     void Update()
     {
@@ -52,20 +60,23 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
-
+            myAudioSource.PlayOneShot(gameAudio[0]);
             animator.SetTrigger("Attack1");
         }
         else if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && model.GetComponent<AnimEvents>().comboCheck)
         {
+            myAudioSource.PlayOneShot(gameAudio[0]);
             animator.SetTrigger("Attack2");
         }
         else if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && model.GetComponent<AnimEvents>().comboCheck)
         {
+            myAudioSource.PlayOneShot(gameAudio[1]);
             animator.SetTrigger("Attack3");
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse1) && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
+            myAudioSource.PlayOneShot(gameAudio[2]);
             animator.SetTrigger("Magic");
             Invoke("MagicAttack", 1);
         }
