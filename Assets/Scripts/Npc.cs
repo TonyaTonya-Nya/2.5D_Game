@@ -17,6 +17,7 @@ public class Npc : MonoBehaviour
 
     public DialogueManager dialogueManager;
 
+    private bool isInDialogue = false;
 
     public bool canDialogue = false;
     private bool isE = false;
@@ -45,24 +46,36 @@ public class Npc : MonoBehaviour
 
     public void StartDialogue()
     {
+        if (isInDialogue)
+            return;
+        isInDialogue = true;
         if (isCompleteMission)
         {
             dialogueManager.StartDialogue(transform.position, postDialogue);
+            dialogueManager.OnDialogueEnd += () => isInDialogue = false;
         }
         else if (isInMission)
         {
             if (mission.CheckComplete())
             {
-                dialogueManager.OnDialogueEnd += FinishMission;
+                dialogueManager.OnDialogueEnd += () =>
+                {
+                    isInDialogue = false;
+                    FinishMission();
+                };
                 dialogueManager.StartDialogue(transform.position, postDialogue);
             }
             else
+            {
+                dialogueManager.OnDialogueEnd += () => isInDialogue = false;
                 dialogueManager.StartDialogue(transform.position, inDialogue);
+            }
         }
         else
         {
             if (mission != null)
                 dialogueManager.OnDialogueEnd += StartMission;
+            dialogueManager.OnDialogueEnd += () => isInDialogue = false;
             dialogueManager.StartDialogue(transform.position, preDialogue);
         }
     }
