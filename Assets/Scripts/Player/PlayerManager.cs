@@ -27,7 +27,7 @@ public class PlayerManager : MonoBehaviour
         gameOver = winLevel = false;
 
         tMag = GameObject.FindGameObjectWithTag("TriggerManager").GetComponent<TriggerManager>();
-
+        flagNum = -1;
         for (int i = 0; i < tMag.trigger.Length; i++)
         {
             if (tMag.trigger[i].name == "Clear")
@@ -59,20 +59,23 @@ public class PlayerManager : MonoBehaviour
             currentHealth = -500;
         }
 
-        if (tMag.trigger[flagNum].status)
+        if (flagNum >= 0)
         {
-            winLevel = true;
-            timer += Time.deltaTime;
-            if (timer > 3)
+            if (tMag.trigger[flagNum].status)
             {
-                int nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
-                if (nextLevel == 4)
-                    SceneManager.LoadScene(0);
+                winLevel = true;
+                timer += Time.deltaTime;
+                if (timer > 3)
+                {
+                    int nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
+                    if (nextLevel == 4)
+                        SceneManager.LoadScene(0);
 
-                if (PlayerPrefs.GetInt("ReachedLevel", 1) < nextLevel)
-                    PlayerPrefs.SetInt("ReachedLevel", nextLevel);
+                    if (PlayerPrefs.GetInt("ReachedLevel", 1) < nextLevel)
+                        PlayerPrefs.SetInt("ReachedLevel", nextLevel);
 
-                SceneManager.LoadScene(nextLevel);
+                    SceneManager.LoadScene(nextLevel);
+                }
             }
         }
 
