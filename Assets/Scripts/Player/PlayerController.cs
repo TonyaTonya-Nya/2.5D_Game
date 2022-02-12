@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public float atkDamage;
     public float comboDamage;
 
+    public RectTransform blackImage;
+
     public AudioClip[] gameAudio;
     private AudioSource myAudioSource;
 
@@ -31,7 +33,8 @@ public class PlayerController : MonoBehaviour
             this.enabled = false;
         }*/
 
-
+        if (blackImage != null)
+            blackImage.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 2.5f);
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
@@ -101,8 +104,8 @@ public class PlayerController : MonoBehaviour
             else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2"))
                 damage = atkDamage + comboDamage;
             else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack3"))
-                damage = atkDamage+2*comboDamage;
-            other.GetComponent<Enemy>().TakeDamage(damage,0);
+                damage = atkDamage + 2 * comboDamage;
+            other.GetComponent<Enemy>().TakeDamage(damage, 0);
         }
         else if (other.CompareTag("Npc") && other.GetComponent<Npc>().DialogueCheck())
         {
