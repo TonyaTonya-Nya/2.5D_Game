@@ -11,6 +11,8 @@ public class Meteorite : MonoBehaviour
     public GameObject hintObject;
     private PlayerManager player;
 
+    public AudioClip audioClip;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerManager>();
@@ -24,6 +26,7 @@ public class Meteorite : MonoBehaviour
         }
         else if (transform.position.y <= 0)
         {
+            AudioSource.PlayClipAtPoint(audioClip, transform.position);
             Instantiate(damageEffect, transform.position, damageEffect.transform.rotation);
             Destroy(hintObject);
             Destroy(gameObject);
@@ -34,6 +37,7 @@ public class Meteorite : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioSource.PlayClipAtPoint(audioClip, transform.position);
             Instantiate(damageEffect, transform.position, damageEffect.transform.rotation);
             player.Damage(damage);
             Destroy(hintObject);

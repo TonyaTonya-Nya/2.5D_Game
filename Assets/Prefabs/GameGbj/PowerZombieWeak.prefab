@@ -115,9 +115,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseRange: 10
   attackRange: 2
-  attackValue: 0.1
+  attackValue: 0.2
   health: 0
-  maxHealth: 40
+  maxHealth: 200
   model: {fileID: 6913591053979982393}
   animator: {fileID: 6375050960413588944}
   ui: {fileID: 8392406071241075613}

@@ -41952,6 +41952,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8319946034559661166, guid: 0df11f15e93352e478a157934a69f60b,
+        type: 3}
+      propertyPath: health
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319946034559661166, guid: 0df11f15e93352e478a157934a69f60b,
+        type: 3}
+      propertyPath: maxHealth
+      value: 450
+      objectReference: {fileID: 0}
     - target: {fileID: 8319946034686087110, guid: 0df11f15e93352e478a157934a69f60b,
         type: 3}
       propertyPath: m_StaticEditorFlags

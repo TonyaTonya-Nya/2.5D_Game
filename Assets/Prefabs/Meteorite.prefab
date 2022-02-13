@@ -113,6 +113,7 @@ MonoBehaviour:
   damage: 5
   speed: 35
   hintObject: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 519c13afcd30fad40a97c72293f6352e, type: 3}
 --- !u!1001 &2991959688515004323
 PrefabInstance:
   m_ObjectHideFlags: 0
