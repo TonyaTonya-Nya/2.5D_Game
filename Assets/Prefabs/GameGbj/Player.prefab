@@ -143,11 +143,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1107397640708857618}
-  speed: 10
+  speed: 12
   animator: {fileID: 8354402408897816044}
   model: {fileID: 8393150354387681801}
   atkDamage: 1
   comboDamage: 0.5
+  blackImage: {fileID: 0}
   gameAudio:
   - {fileID: 8300000, guid: 7560c4991ce7bc944bd7661011689746, type: 3}
   - {fileID: 8300000, guid: 4874be6a5d81a8249b08dfa072720367, type: 3}
@@ -1138,20 +1139,6 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1107397640756229981}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1107397639639755228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9165288599162755251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aa948d4dbee9bb4ba5583cb32c62316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackCheck: 0
-  comboCheck: 0
 --- !u!114 &1107397639639755203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1169,3 +1156,17 @@ MonoBehaviour:
   fireBallPoint: {fileID: 1107397640510451723}
   fireBallSpeed: 1000
   model: {fileID: 8393150354387681801}
+--- !u!114 &1107397639639755228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165288599162755251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa948d4dbee9bb4ba5583cb32c62316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCheck: 0
+  comboCheck: 0
