@@ -33,11 +33,11 @@ public class MeteoriteArea : MonoBehaviour
         {
             float time = Random.Range(minTime, maxTime);
             yield return new WaitForSeconds(time);
-            int number = Random.Range(minNumber, maxNumber);
+            int number = Random.Range(minNumber, maxNumber + 1);
             for (int i = 0;i < number;i++)
             {
-                float x = Random.Range(minX, maxX);
-                float z = Random.Range(minZ, maxZ);
+                float x = Random.Range(minX, maxX + 1);
+                float z = Random.Range(minZ, maxZ + 1);
                 GameObject meteorite = Instantiate(MeteoritePreafab, new Vector3(x, generateY, z), Quaternion.Euler(-90, 0, 0));
                 if (generateHint)
                 {

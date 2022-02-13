@@ -9202,10 +9202,10 @@ MonoBehaviour:
   maxX: 55
   minZ: 16
   maxZ: 81
-  minNumber: 5
-  maxNumber: 10
-  minTime: 5
-  maxTime: 8
+  minNumber: 1
+  maxNumber: 1
+  minTime: 20
+  maxTime: 20
   generateHint: 0
   generateY: 1
 --- !u!1001 &1452082240
@@ -13391,7 +13391,7 @@ MonoBehaviour:
   attackRange: 3
   attackValue: 0.5
   health: 0
-  maxHealth: 500
+  maxHealth: 1000
   model: {fileID: 1623198708}
   animator: {fileID: 1623198706}
   ui: {fileID: 6643076367405871292}
