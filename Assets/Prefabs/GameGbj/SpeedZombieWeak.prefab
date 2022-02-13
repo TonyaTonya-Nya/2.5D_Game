@@ -117,7 +117,7 @@ MonoBehaviour:
   attackRange: 2
   attackValue: 0.1
   health: 0
-  maxHealth: 100
+  maxHealth: 75
   model: {fileID: 3137200616916901650}
   animator: {fileID: 3171424929300789499}
   ui: {fileID: 5193246378103936400}

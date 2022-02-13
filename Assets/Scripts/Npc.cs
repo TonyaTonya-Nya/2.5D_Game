@@ -51,23 +51,20 @@ public class Npc : MonoBehaviour
         isInDialogue = true;
         if (isCompleteMission)
         {
+            dialogueManager.OnDialogueEnd += FinishDialogue;
             dialogueManager.StartDialogue(transform.position, postDialogue);
-            dialogueManager.OnDialogueEnd += () => isInDialogue = false;
         }
         else if (isInMission)
         {
             if (mission.CheckComplete())
             {
-                dialogueManager.OnDialogueEnd += () =>
-                {
-                    isInDialogue = false;
-                    FinishMission();
-                };
+                dialogueManager.OnDialogueEnd += FinishMission;
+                dialogueManager.OnDialogueEnd += FinishDialogue;
                 dialogueManager.StartDialogue(transform.position, postDialogue);
             }
             else
             {
-                dialogueManager.OnDialogueEnd += () => isInDialogue = false;
+                dialogueManager.OnDialogueEnd += FinishDialogue;
                 dialogueManager.StartDialogue(transform.position, inDialogue);
             }
         }
@@ -75,9 +72,20 @@ public class Npc : MonoBehaviour
         {
             if (mission != null)
                 dialogueManager.OnDialogueEnd += StartMission;
-            dialogueManager.OnDialogueEnd += () => isInDialogue = false;
+            dialogueManager.OnDialogueEnd += FinishDialogue;
             dialogueManager.StartDialogue(transform.position, preDialogue);
         }
+    }
+
+    private void FinishDialogue()
+    {
+        Invoke("DelayFalse", 0.5f);
+        dialogueManager.OnDialogueEnd -= FinishDialogue;
+    }
+
+    private void DelayFalse()
+    {
+        isInDialogue = false;
     }
 
     private void StartMission()
