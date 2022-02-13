@@ -41,7 +41,7 @@ public class MeteoriteArea : MonoBehaviour
                 GameObject meteorite = Instantiate(MeteoritePreafab, new Vector3(x, generateY, z), Quaternion.Euler(-90, 0, 0));
                 if (generateHint)
                 {
-                    GameObject hint = Instantiate(HintPrefab, new Vector3(x, 0, z), Quaternion.Euler(0, 0, -90));
+                    GameObject hint = Instantiate(HintPrefab, new Vector3(x, 0.5f, z), Quaternion.Euler(-90, 0, 0));
                     if (meteorite.TryGetComponent<Meteorite>(out Meteorite m))
                         m.GetComponent<Meteorite>().hintObject = hint;
                 }
