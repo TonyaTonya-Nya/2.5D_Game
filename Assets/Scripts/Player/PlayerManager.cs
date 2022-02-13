@@ -42,7 +42,7 @@ public class PlayerManager : MonoBehaviour
 
         if (currentHealth <= 100)
         {
-            currentHealth += 0.005f;
+            currentHealth += 0.001f;
         }
 
         //Display the number of coins
@@ -71,10 +71,13 @@ public class PlayerManager : MonoBehaviour
                     if (nextLevel == 4)
                         SceneManager.LoadScene(0);
 
-                    if (PlayerPrefs.GetInt("ReachedLevel", 1) < nextLevel)
+                    else if (PlayerPrefs.GetInt("ReachedLevel", 1) < nextLevel)
+                    {
                         PlayerPrefs.SetInt("ReachedLevel", nextLevel);
 
-                    SceneManager.LoadScene(nextLevel);
+                        SceneManager.LoadScene(nextLevel);
+                    }
+                      
                 }
             }
         }
