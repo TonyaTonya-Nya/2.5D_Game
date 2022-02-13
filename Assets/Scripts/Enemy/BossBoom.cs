@@ -18,7 +18,7 @@ public class BossBoom : MonoBehaviour
         if (other.tag == "Player")
         {
             Instantiate(damageEffect, transform.position, damageEffect.transform.rotation);
-            player.Damage(5);
+            player.Damage(damageAmount);
             Destroy(gameObject);
         }
     }

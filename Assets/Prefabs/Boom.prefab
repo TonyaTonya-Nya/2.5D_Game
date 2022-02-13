@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageEffect: {fileID: 100002, guid: 391ec6f1311384e75b4888fd6fc26b7e, type: 3}
-  damageAmount: 80
+  damageAmount: 1
 --- !u!1001 &1120369000656476034
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,4 +1,4 @@
-﻿using UnityEngine.UI;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class LevelsUnlock : MonoBehaviour
@@ -12,7 +12,7 @@ public class LevelsUnlock : MonoBehaviour
 
         int reachedLevel = PlayerPrefs.GetInt("ReachedLevel", 1);
 
-        for (int i = 0; i < reachedLevel; i++)
+        for (int i = 0; i < reachedLevel && i < levelButtons.Length; i++)
             levelButtons[i].interactable = true;
     }
 
