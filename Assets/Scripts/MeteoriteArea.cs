@@ -18,6 +18,9 @@ public class MeteoriteArea : MonoBehaviour
     public float minTime;
     public float maxTime;
 
+    public bool generateHint;
+    public float generateY;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +38,13 @@ public class MeteoriteArea : MonoBehaviour
             {
                 float x = Random.Range(minX, maxX);
                 float z = Random.Range(minZ, maxZ);
-                GameObject hint =  Instantiate(HintPrefab, new Vector3(x, 0, z), Quaternion.Euler(0, 0, -90));
-                GameObject meteorite = Instantiate(MeteoritePreafab, new Vector3(x, 100, z), Quaternion.Euler(-90, 0, 0));
-                meteorite.GetComponent<Meteorite>().hintObject = hint;
+                GameObject meteorite = Instantiate(MeteoritePreafab, new Vector3(x, generateY, z), Quaternion.Euler(-90, 0, 0));
+                if (generateHint)
+                {
+                    GameObject hint = Instantiate(HintPrefab, new Vector3(x, 0, z), Quaternion.Euler(0, 0, -90));
+                    if (meteorite.TryGetComponent<Meteorite>(out Meteorite m))
+                        m.GetComponent<Meteorite>().hintObject = hint;
+                }
             }
             yield return null;
         }

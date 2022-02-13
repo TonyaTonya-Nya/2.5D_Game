@@ -5452,6 +5452,63 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 722794430}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &739932605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 739932606}
+  - component: {fileID: 739932607}
+  m_Layer: 0
+  m_Name: MeteoriteArea LU
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &739932606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739932605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.68, y: -0.05, z: -3.2}
+  m_LocalScale: {x: 0.09999997, y: 0.1, z: 0.09999997}
+  m_Children: []
+  m_Father: {fileID: 6643076366342985123}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &739932607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739932605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b24a915d97d6e244879e3971250a56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeteoritePreafab: {fileID: 5030140383540449357, guid: 6e32df67857e3ea4db005594ef91c213,
+    type: 3}
+  HintPrefab: {fileID: 102468307561833288, guid: 275be3b81f5dfab42996ccbfc34ba3b7,
+    type: 3}
+  minX: -38.38
+  maxX: -24.6
+  minZ: 68.38
+  maxZ: 82.1
+  minNumber: 3
+  maxNumber: 8
+  minTime: 2
+  maxTime: 6
+  generateHint: 1
+  generateY: 100
 --- !u!1001 &746235194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7329,6 +7386,63 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1166896911}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1177985158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1177985159}
+  - component: {fileID: 1177985160}
+  m_Layer: 0
+  m_Name: MeteoriteArea LD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1177985159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177985158}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.182, y: -0.05, z: 2.322}
+  m_LocalScale: {x: 0.09999997, y: 0.1, z: 0.09999997}
+  m_Children: []
+  m_Father: {fileID: 6643076366342985123}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1177985160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177985158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b24a915d97d6e244879e3971250a56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeteoritePreafab: {fileID: 5030140383540449357, guid: 6e32df67857e3ea4db005594ef91c213,
+    type: 3}
+  HintPrefab: {fileID: 102468307561833288, guid: 275be3b81f5dfab42996ccbfc34ba3b7,
+    type: 3}
+  minX: -36.86
+  maxX: -23.5
+  minZ: 21.33
+  maxZ: 34
+  minNumber: 3
+  maxNumber: 8
+  minTime: 2
+  maxTime: 6
+  generateHint: 1
+  generateY: 100
 --- !u!1 &1181765593
 GameObject:
   m_ObjectHideFlags: 0
@@ -7370,6 +7484,8 @@ MonoBehaviour:
   maxNumber: 20
   minTime: 1
   maxTime: 5
+  generateHint: 1
+  generateY: 100
 --- !u!4 &1181765595
 Transform:
   m_ObjectHideFlags: 0
@@ -7378,7 +7494,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1181765593}
   m_LocalRotation: {x: -0, y: -0.99940306, z: -0, w: 0.034548502}
-  m_LocalPosition: {x: -5.099501, y: -0.05, z: 0.022756958}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.09999997, y: 0.1, z: 0.09999997}
   m_Children: []
   m_Father: {fileID: 6643076366342985123}
@@ -8978,6 +9094,120 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1419147711}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1429619946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1429619947}
+  - component: {fileID: 1429619948}
+  m_Layer: 0
+  m_Name: MeteoriteArea RD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1429619947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429619946}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.3543677, y: -0.30997297, z: 1.5540124}
+  m_LocalScale: {x: 0.10000001, y: 0.1, z: 0.10000001}
+  m_Children: []
+  m_Father: {fileID: 6643076366342985123}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1429619948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429619946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b24a915d97d6e244879e3971250a56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeteoritePreafab: {fileID: 5030140383540449357, guid: 6e32df67857e3ea4db005594ef91c213,
+    type: 3}
+  HintPrefab: {fileID: 102468307561833288, guid: 275be3b81f5dfab42996ccbfc34ba3b7,
+    type: 3}
+  minX: 42.96
+  maxX: 58.6
+  minZ: 19.01
+  maxZ: 34.4
+  minNumber: 3
+  maxNumber: 8
+  minTime: 2
+  maxTime: 6
+  generateHint: 1
+  generateY: 100
+--- !u!1 &1437166432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1437166433}
+  - component: {fileID: 1437166434}
+  m_Layer: 0
+  m_Name: helath Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1437166433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437166432}
+  m_LocalRotation: {x: -0, y: -0.99940306, z: -0, w: 0.034548502}
+  m_LocalPosition: {x: -5.099501, y: -0.05, z: 0.022756958}
+  m_LocalScale: {x: 0.09999997, y: 0.1, z: 0.09999997}
+  m_Children: []
+  m_Father: {fileID: 6643076366342985123}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1437166434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437166432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b24a915d97d6e244879e3971250a56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeteoritePreafab: {fileID: 6877369128220045871, guid: 904ebe88cff1a684fb51775e92319e2b,
+    type: 3}
+  HintPrefab: {fileID: 102468307561833288, guid: 275be3b81f5dfab42996ccbfc34ba3b7,
+    type: 3}
+  minX: -40
+  maxX: 55
+  minZ: 16
+  maxZ: 81
+  minNumber: 5
+  maxNumber: 10
+  minTime: 5
+  maxTime: 8
+  generateHint: 0
+  generateY: 1
 --- !u!1001 &1452082240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9387,6 +9617,63 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1566701667}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1568120143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1568120144}
+  - component: {fileID: 1568120145}
+  m_Layer: 0
+  m_Name: MeteoriteArea RU
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1568120144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568120143}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.5678115, y: -0.17998649, z: -3.1224117}
+  m_LocalScale: {x: 0.10000001, y: 0.1, z: 0.10000001}
+  m_Children: []
+  m_Father: {fileID: 6643076366342985123}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1568120145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568120143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b24a915d97d6e244879e3971250a56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeteoritePreafab: {fileID: 5030140383540449357, guid: 6e32df67857e3ea4db005594ef91c213,
+    type: 3}
+  HintPrefab: {fileID: 102468307561833288, guid: 275be3b81f5dfab42996ccbfc34ba3b7,
+    type: 3}
+  minX: 42.91
+  maxX: 57.5
+  minZ: 67.78
+  maxZ: 81.2
+  minNumber: 3
+  maxNumber: 8
+  minTime: 2
+  maxTime: 6
+  generateHint: 1
+  generateY: 100
 --- !u!1001 &1574993659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13043,6 +13330,11 @@ Transform:
   - {fileID: 1623198708}
   - {fileID: 1185454969}
   - {fileID: 1181765595}
+  - {fileID: 1437166433}
+  - {fileID: 1177985159}
+  - {fileID: 739932606}
+  - {fileID: 1568120144}
+  - {fileID: 1429619947}
   m_Father: {fileID: 476458152}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 176.04, z: 0}

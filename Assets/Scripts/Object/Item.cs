@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.tag);
         if (other.CompareTag("Player"))
         {
             AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position, 1);
