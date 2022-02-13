@@ -83,6 +83,11 @@ public class PlayerManager : MonoBehaviour
         }
 
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
+
         //if( FindObjectsOfType<Enemy>().Length ==0)
         //{
         //    //Win Level
