@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip[] gameAudio;
     private AudioSource myAudioSource;
 
+    private float magicCD = 0f;
     private void Start()
     {
         myAudioSource = GetComponent<AudioSource>();
@@ -51,7 +52,8 @@ public class PlayerController : MonoBehaviour
         float vInput = Input.GetAxis("Vertical");
         direction.z = vInput;
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Run") && (hInput != 0 || vInput != 0))
+        //animator.GetCurrentAnimatorStateInfo(0).IsName("Run") &&
+        if ((hInput != 0 || vInput != 0))
         {
             controller.Move(direction * Time.deltaTime * speed);
             Quaternion newRotation = Quaternion.LookRotation(new Vector3(hInput, 0, vInput));
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Run")))
         {
             myAudioSource.PlayOneShot(gameAudio[0]);
             animator.SetTrigger("Attack1");
@@ -77,8 +79,11 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Attack3");
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1) && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        magicCD -= Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Mouse1) && magicCD < 0f && (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("Run")))
         {
+            magicCD = 3;
             myAudioSource.PlayOneShot(gameAudio[2]);
             animator.SetTrigger("Magic");
             Invoke("MagicAttack", 1);
